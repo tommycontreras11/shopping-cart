@@ -3,8 +3,8 @@
 1. Ecommerce
 
 ✅ Show a product lists that come from a JSON
-- Add a filter by category
-- Add a filter by price
+✅ Add a filter by category
+✅ Add a filter by price
 
 Make use of useContext to avoid passing unnecessary props
 
