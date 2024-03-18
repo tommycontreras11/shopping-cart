@@ -9,8 +9,8 @@
 
 2. Shopping Cart
 
-- Make it possible to add products to a cart
-- Make it possible to remove products from the cart
-- Make it possible to modified the quantity of products in the cart
-- Synchronize cart changes with the product list
+- [x] Make it possible to add products to a cart
+- [x] Make it possible to remove products from the cart
+- [x] Make it possible to modified the quantity of products in the cart
+- [x] Synchronize cart changes with the product list
 - Save the cart in a localStorage so that is is recovered when the page is reloaded
