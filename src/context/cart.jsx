@@ -1,66 +1,39 @@
 import { createContext, useReducer } from "react";
+import { cartReducer, cartInitialState, CART_ACTIONS_TYPES } from "../reducers/cart";
 
 // 1. Create the context
 export const CartContext = createContext()
 
-const initialState = []
-const reducer = (state, action) => {
-    const { type: actionType, payload: actionPayload } = action
-
-    switch(actionType) {
-        case 'ADD_TO_CART': {
-            const { id } = actionPayload
-
-            const productInCartIndex = state.findIndex(item => item.id === id)
-
-            if(productInCartIndex >= 0) {
-                const newState = structuredClone(state)
-                newState[productInCartIndex].quantity += 1
-                return newState
-            }
-            return [
-                ...state, {
-                    ...actionPayload,
-                    quantity: 1
-                }
-            ]
-        }
-
-        case 'REMOVE_FROM_CART': {
-            const { id } = actionPayload
-            return state.filter(item => item.id !== id)
-        }
-
-        case 'CLEAR_CART': {
-            return initialState
-        }
-    }
-}
-
-// 2. Create the provider, to provide the context
-export function CartProvider({ children }) {
-
-    const [state, dispatch] = useReducer(reducer, initialState)
+function userCartReducer() {
+    // dispatch is like a method to perform the action
+    const [state, dispatch] = useReducer(cartReducer, cartInitialState)
 
     const addToCart = (product) => {
         dispatch({
-            type: 'ADD_TO_CART',
+            type: CART_ACTIONS_TYPES.ADD_TO_CART,
             payload: product
         })
     }
 
     const removeFromCart = (product) => {
         dispatch({
-            type: 'REMOVE_FROM_CART',
+            type: CART_ACTIONS_TYPES.REMOVE_FROM_CART,
             payload: product
         })
     }
 
     const clearCart = () => {
         dispatch({
-            type: 'CLEAR_CART'
+            type: CART_ACTIONS_TYPES.CLEAR_CART
         })
     }
+
+    return { state, addToCart, removeFromCart, clearCart }
+}
+
+// 2. Create the provider, to provide the context
+export function CartProvider({ children }) {
+    const { state, addToCart, removeFromCart, clearCart } = userCartReducer()
 
     return (
         <CartContext.Provider value={{

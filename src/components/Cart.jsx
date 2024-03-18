@@ -34,13 +34,13 @@ export function Cart() {
             </label>
             <input id={cartCheckboxId} type="checkbox" hidden />
             <aside className="cart">
-                {cart.map(product => (
-                    <ul>
+                <ul>
+
+                    {cart.map(product => (
                         <CartItem key={product.id} {...product}
                             addToCart={() => addToCart(product)} />
-                    </ul>
-                ))}
-
+                    ))}
+                </ul>
                 <button onClick={() => clearCart()}>
                     <ClearCartIcon />
                 </button>
