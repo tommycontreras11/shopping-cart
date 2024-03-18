@@ -45,3 +45,11 @@
     object-fit: cover;
     background: #fff;
   }
+
+  .add-to-cart-button {
+    background: #09f;
+  }
+
+  .remove-from-cart-button {
+    background: red;
+  }

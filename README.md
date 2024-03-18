@@ -5,8 +5,7 @@
 - [x] Show a product lists that come from a JSON
 - [x] Add a filter by category
 - [x] Add a filter by price
-
-Make use of useContext to avoid passing unnecessary props
+- [x] Make use of useContext to avoid passing unnecessary props
 
 2. Shopping Cart
 
